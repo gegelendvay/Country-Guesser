@@ -27,10 +27,6 @@
         "capital": "The Valley",
         "continent": "North America"
     },
-    "Antarctica": {
-        "capital": null,
-        "continent": "Antarctica"
-    },
     "Antigua and Barbuda": {
         "capital": "Saint John's",
         "continent": "North America"
@@ -111,16 +107,12 @@
         "capital": "Gaborone",
         "continent": "Africa"
     },
-    "Bouvet Island": {
-        "capital": null,
-        "continent": "Antarctica"
-    },
     "Brazil": {
-        "capital": "Bras\u00edlia",
+        "capital": "Brasilia",
         "continent": "South America"
     },
     "British Indian Ocean Territory": {
-        "capital": null,
+        "capital": "Diego Garcia",
         "continent": "Africa"
     },
     "Brunei": {
@@ -200,7 +192,7 @@
         "continent": "Oceania"
     },
     "Costa Rica": {
-        "capital": "San Jos\u00e9",
+        "capital": "San Jose",
         "continent": "North America"
     },
     "Croatia": {
@@ -276,7 +268,7 @@
         "continent": "South America"
     },
     "Faroe Islands": {
-        "capital": "T\u00f3rshavn",
+        "capital": "Torshavn",
         "continent": "Europe"
     },
     "Fiji Islands": {
@@ -299,8 +291,8 @@
         "capital": "Papeete",
         "continent": "Oceania"
     },
-    "French Southern territories": {
-        "capital": null,
+    "French Southern and Antarctic Lands": {
+        "capital": "Saint Pierre",
         "continent": "Antarctica"
     },
     "Gabon": {
@@ -367,10 +359,6 @@
         "capital": "Port-au-Prince",
         "continent": "North America"
     },
-    "Heard Island and McDonald Islands": {
-        "capital": null,
-        "continent": "Antarctica"
-    },
     "Honduras": {
         "capital": "Tegucigalpa",
         "continent": "North America"
@@ -384,7 +372,7 @@
         "continent": "Europe"
     },
     "Iceland": {
-        "capital": "Reykjav\u00edk",
+        "capital": "Reykjavik",
         "continent": "Europe"
     },
     "India": {
@@ -543,7 +531,7 @@
         "capital": "Ciudad de M",
         "continent": "North America"
     },
-    "Micronesia, Federated States of": {
+    "Federated States of Micronesia": {
         "capital": "Palikir",
         "continent": "Oceania"
     },
@@ -660,7 +648,7 @@
         "continent": "Asia"
     },
     "Panama": {
-        "capital": "Ciudad de Panam\u00e1",
+        "capital": "Panama city",
         "continent": "North America"
     },
     "Papua New Guinea": {
@@ -668,7 +656,7 @@
         "continent": "Oceania"
     },
     "Paraguay": {
-        "capital": "Asunci\u00f3n",
+        "capital": "Asuncion",
         "continent": "South America"
     },
     "Peru": {
@@ -744,7 +732,7 @@
         "continent": "Europe"
     },
     "Sao Tome and Principe": {
-        "capital": "S\u00e3o Tom\u00e9",
+        "capital": "Sao Tome",
         "continent": "Africa"
     },
     "Saudi Arabia": {
@@ -796,7 +784,7 @@
         "continent": "Africa"
     },
     "South Georgia and the South Sandwich Islands": {
-        "capital": null,
+        "capital": "King Edward Point",
         "continent": "Antarctica"
     },
     "South Korea": {
@@ -812,7 +800,7 @@
         "continent": "Europe"
     },
     "Sri Lanka": {
-        "capital": "Colombo, Sri Jayawardenepura Kotte",
+        "capital": "Colombo",
         "continent": "Asia"
     },
     "Sudan": {
@@ -860,7 +848,7 @@
         "continent": "Africa"
     },
     "Togo": {
-        "capital": "Lom\u00e9",
+        "capital": "Lome",
         "continent": "Africa"
     },
     "Tokelau": {
@@ -915,10 +903,6 @@
         "capital": "Washington",
         "continent": "North America"
     },
-    "United States Minor Outlying Islands": {
-        "capital": null,
-        "continent": "Oceania"
-    },
     "Uruguay": {
         "capital": "Montevideo",
         "continent": "South America"
@@ -943,11 +927,11 @@
         "capital": "Hanoi",
         "continent": "Asia"
     },
-    "Virgin Islands, British": {
+    "British Virgin Islands": {
         "capital": "Road Town",
         "continent": "North America"
     },
-    "Virgin Islands, U.S.": {
+    "U.S. Virgin Islands": {
         "capital": "Charlotte Amalie",
         "continent": "North America"
     },
