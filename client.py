@@ -1,4 +1,5 @@
 import functions
+import json
 import socket
 
 with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
@@ -9,9 +10,15 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
     print(welcome)
     while True:
         #Question
-        question = s.recv(1024).decode('utf-8')
-        options = s.recv(1024).decode('utf-8')
-        print(f'{question}\n{options}')
+        question = s.recv(4096).decode('utf-8')
+        print(question)
+        try:
+            options = json.loads(s.recv(1024).decode('utf-8'))
+            for i in options:
+                print(f'- {i}')
+        except json.decoder.JSONDecodeError:
+            s.close()
+            break
 
         #Answer
         answer = input('Enter your answer: ')
@@ -26,7 +33,7 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
 
         hint = input('Yes/No: ')
         s.sendall(hint.encode('utf-8'))
-        if hint.lower() == 'yes':
+        if hint.lower() == 'yes' or hint.lower() == 'y':
             continent = s.recv(1024).decode('utf-8')
             print(continent)
             answer = input('Enter your answer: ')

@@ -76,7 +76,7 @@
         "continent": "Europe"
     },
     "Belgium": {
-        "capital": "Bruxelles [Brussel]",
+        "capital": "Bruxelles",
         "continent": "Europe"
     },
     "Belize": {
@@ -243,10 +243,6 @@
         "capital": "San Salvador",
         "continent": "North America"
     },
-    "England": {
-        "capital": "London",
-        "continent": "Europe"
-    },
     "Equatorial Guinea": {
         "capital": "Malabo",
         "continent": "Africa"
@@ -258,6 +254,10 @@
     "Estonia": {
         "capital": "Tallinn",
         "continent": "Europe"
+    },
+    "Eswatini": {
+        "capital": "Mbabane",
+        "continent": "Africa"
     },
     "Ethiopia": {
         "capital": "Addis Abeba",
@@ -276,7 +276,7 @@
         "continent": "Oceania"
     },
     "Finland": {
-        "capital": "Helsinki [Helsingfors]",
+        "capital": "Helsinki",
         "continent": "Europe"
     },
     "France": {
@@ -459,7 +459,7 @@
         "capital": "Monrovia",
         "continent": "Africa"
     },
-    "Libyan Arab Jamahiriya": {
+    "Libya": {
         "capital": "Tripoli",
         "continent": "Africa"
     },
@@ -472,7 +472,7 @@
         "continent": "Europe"
     },
     "Luxembourg": {
-        "capital": "Luxembourg [Luxemburg/L",
+        "capital": "Luxembourg",
         "continent": "Europe"
     },
     "Macao": {
@@ -528,7 +528,7 @@
         "continent": "Africa"
     },
     "Mexico": {
-        "capital": "Ciudad de M",
+        "capital": "Mexico City",
         "continent": "North America"
     },
     "Federated States of Micronesia": {
@@ -583,10 +583,6 @@
         "capital": "Amsterdam",
         "continent": "Europe"
     },
-    "Netherlands Antilles": {
-        "capital": "Willemstad",
-        "continent": "North America"
-    },
     "New Caledonia": {
         "capital": "Noum",
         "continent": "Oceania"
@@ -619,10 +615,6 @@
         "capital": "Pyongyang",
         "continent": "Asia"
     },
-    "Northern Ireland": {
-        "capital": "Belfast",
-        "continent": "Europe"
-    },
     "Northern Mariana Islands": {
         "capital": "Garapan",
         "continent": "Oceania"
@@ -648,7 +640,7 @@
         "continent": "Asia"
     },
     "Panama": {
-        "capital": "Panama city",
+        "capital": "Panama City",
         "continent": "North America"
     },
     "Papua New Guinea": {
@@ -695,7 +687,7 @@
         "capital": "Bucuresti",
         "continent": "Europe"
     },
-    "Russian Federation": {
+    "Russia": {
         "capital": "Moscow",
         "continent": "Europe"
     },
@@ -738,10 +730,6 @@
     "Saudi Arabia": {
         "capital": "Riyadh",
         "continent": "Asia"
-    },
-    "Scotland": {
-        "capital": "Edinburgh",
-        "continent": "Europe"
     },
     "Senegal": {
         "capital": "Dakar",
@@ -814,10 +802,6 @@
     "Svalbard and Jan Mayen": {
         "capital": "Longyearbyen",
         "continent": "Europe"
-    },
-    "Swaziland": {
-        "capital": "Mbabane",
-        "continent": "Africa"
     },
     "Sweden": {
         "capital": "Stockholm",
@@ -934,10 +918,6 @@
     "U.S. Virgin Islands": {
         "capital": "Charlotte Amalie",
         "continent": "North America"
-    },
-    "Wales": {
-        "capital": "Cardiff",
-        "continent": "Europe"
     },
     "Wallis and Futuna": {
         "capital": "Mata-Utu",

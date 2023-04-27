@@ -28,7 +28,7 @@ def getQuestion(country):
         if newCountry not in options and newCountry != correctAnswer:
             options.append(newCountry)
     random.shuffle(options)
-    return (correctAnswer, options)
+    return options
 
 def checkAnswer(answer, correctAnswer):
     if answer.lower() == correctAnswer.lower():

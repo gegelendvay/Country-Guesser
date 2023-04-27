@@ -1,4 +1,5 @@
 import functions
+import json
 import socket
 import threading
 
@@ -11,31 +12,37 @@ def handleClient(client, address):
         question = f'Which countries capital city is {capital}?'
         client.sendall(question.encode('utf-8'))
         options = functions.getQuestion(country)
-        client.sendall(str(options).encode('utf-8'))
-        answer = client.recv(1024).decode('utf-8')
+        client.sendall(json.dumps(options).encode('utf-8'))
+        try:
+            answer = client.recv(4096).decode('utf-8')
+        except UnicodeDecodeError:
+            break
         if functions.checkAnswer(answer, country):
             client.sendall('Correct answer!'.encode('utf-8'))
-            points += 1
-            print(f'Client {address} has {points} points')
+            points += 2
+            #print(f'Client {address} has {points} points')
             continue
         else:
             client.sendall('Incorrect answer. Do you want a hint?'.encode('utf-8'))
             hint = client.recv(1024).decode('utf-8')
-            if hint.lower() == 'yes':
+            if hint.lower() == 'yes' or hint.lower() == 'y':
                 continent = functions.getContinent(country)
-                client.sendall(f'The country is located in {continent}'.encode('utf-8'))
-                hintAnswer = client.recv(1024).decode('utf-8')
+                client.sendall(f'The country is located in {continent}.'.encode('utf-8'))
+                try:
+                    hintAnswer = client.recv(1024).decode('utf-8')
+                except UnicodeDecodeError:
+                    break
                 if functions.checkAnswer(hintAnswer, country):
                     client.sendall('Correct answer!'.encode('utf-8'))
                     points += 1
-                    print(f'Client {address} has {points} points')
-                    #continue
+                    #print(f'Client {address} has {points} points')
+                    continue
                 else:
-                    client.sendall('Incorrect answer, thanks for playing!'.encode('utf-8'))
+                    client.sendall(f'Incorrect answer. The correct answer was {country}! Your score: {points}'.encode('utf-8'))
                     client.close()
                     break
             else:
-                client.sendall('Thanks for playing!'.encode('utf-8'))
+                client.sendall(f'Thanks for playing! Your score: {points}'.encode('utf-8'))
                 client.close()
                 break
 
