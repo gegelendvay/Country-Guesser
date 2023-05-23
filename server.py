@@ -51,6 +51,7 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
     s.bind(('localhost', port))
     s.listen()
     print(f'Listening on port {port}')
+    functions.initDB()
     while True:
         client, address = s.accept()
         thread = threading.Thread(target=handleClient, args=(client, address))

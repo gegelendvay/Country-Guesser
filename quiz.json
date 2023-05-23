@@ -315,10 +315,6 @@
         "capital": "Accra",
         "continent": "Africa"
     },
-    "Gibraltar": {
-        "capital": "Gibraltar",
-        "continent": "Europe"
-    },
     "Greece": {
         "capital": "Athenai",
         "continent": "Europe"
@@ -924,7 +920,7 @@
         "continent": "Oceania"
     },
     "Western Sahara": {
-        "capital": "El-Aai",
+        "capital": "Laayoune",
         "continent": "Africa"
     },
     "Yemen": {
