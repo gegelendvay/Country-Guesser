@@ -1,14 +1,16 @@
 import functions
 import json
 import socket
+import os
 
+score = 0
 highScore = 0
 
 functions.register('Joe', '1234')
 
 def handleGame():
     global highScore
-    print('1. Play Again\n2. Leaderboard\n3. Login\n4.Register\n5. Quit')
+    print('[1]Play Again\n[2]Leaderboard\n[3]Login\n[4]Register\n[5]Quit')
     userInput = input()
     if not userInput.isdigit():
         return False
@@ -21,9 +23,15 @@ def handleGame():
         return False
     elif userInput == 3:
         username = input('Enter your username: ')
-        functions.login(username, '1234')
-        functions.updateScore(username, highScore)
-        return False
+        password = input('Enter your password: ')
+        if functions.login(username, password):
+            print('Login successful!')
+            highScore = functions.getHighScore(username)
+            functions.updateScore(username, highScore)
+            return True
+        else:
+            print('Login failed!')
+            return False
     elif userInput == 4:
         username = input('Enter your username: ')
         password = input('Enter your password: ')
@@ -31,16 +39,18 @@ def handleGame():
         return False
     elif userInput == 5 or userInput > 5:
         return False
-
-    #return False
+    
+def clearConsole():
+    os.system('cls' if os.name=='nt' else 'clear')
 
 restart = True
+clearConsole()
 
 while restart:
     with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
         port = 9999
         s.connect(('localhost', port))
-        print(f'Connected to port {port}')
+        #print(f'Connected to port {port}')
         welcome = s.recv(1024).decode('utf-8')
         print(welcome)
         while True:
@@ -76,8 +86,11 @@ while restart:
                 response = s.recv(1024).decode('utf-8')
                 print(response)
             else:
-                print(s.recv(1024).decode('utf-8'))
+                result = s.recv(1024).decode('utf-8')
+                print(result)
+                score = result.split(': ', 1)[1]
                 restart = False
                 break
     restart = handleGame()
+    clearConsole()
 s.close()
