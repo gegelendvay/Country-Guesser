@@ -2,7 +2,7 @@ import json
 import random
 import sqlite3
     
-def initDB():
+def setupDB():
     connection = sqlite3.connect('quiz.db')
     cursor = connection.cursor()
     cursor.execute('CREATE TABLE IF NOT EXISTS quiz (username TEXT, password TEXT, highScore INTEGER)')
@@ -15,17 +15,17 @@ def getCountry():
     country = random.choice(list(data.keys()))
     return country
 
-def getCapital(country):
+def getCapital(country: str):
     with open("quiz.json") as f:
         data = json.load(f)
     return data[country]['capital']
 
-def getContinent(country):
+def getContinent(country: str):
     with open("quiz.json") as f:
         data = json.load(f)
     return data[country]['continent']
 
-def getQuestion(country):
+def getQuestion(country: str):
     with open("quiz.json") as f:
         data = json.load(f)
     
@@ -38,7 +38,7 @@ def getQuestion(country):
     random.shuffle(options)
     return options
 
-def checkAnswer(answer, correctAnswer):
+def checkAnswer(answer: str, correctAnswer: str):
     if answer.lower() == correctAnswer.lower():
         return True
     else:
@@ -52,7 +52,7 @@ def leaderboard():
     connection.close()
     return result
 
-def register(username, password):
+def register(username: str, password: str):
     connection = sqlite3.connect('quiz.db')
     cursor = connection.cursor()
     cursor.execute('SELECT username FROM quiz WHERE username=?', (username,))
@@ -66,7 +66,7 @@ def register(username, password):
         connection.close()
         return False
     
-def login(username, password):
+def login(username: str, password: str):
     connection = sqlite3.connect('quiz.db')
     cursor = connection.cursor()
     cursor.execute('SELECT username, password FROM quiz WHERE username=? AND password=?', (username, password))
@@ -78,7 +78,7 @@ def login(username, password):
         connection.close()
         return True
 
-def updateScore(username, score):
+def updateScore(username: str, score: str):
     connection = sqlite3.connect('quiz.db')
     cursor = connection.cursor()
     cursor.execute('UPDATE quiz SET highScore=? WHERE username=?', (score, username))
