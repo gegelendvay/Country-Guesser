@@ -51,11 +51,11 @@ def leaderboard():
     result = cursor.fetchall()
     connection.close()
     return result
-
-def register(username: str, password: str):
+    
+def login(username: str, password: str):
     connection = sqlite3.connect('quiz.db')
     cursor = connection.cursor()
-    cursor.execute('SELECT username FROM quiz WHERE username=?', (username,))
+    cursor.execute('SELECT username, password FROM quiz WHERE username=?', (username,))
     result = cursor.fetchone()
     if result is None:
         cursor.execute('INSERT INTO quiz VALUES (?, ?, ?)', (username, password, 0))
@@ -63,24 +63,23 @@ def register(username: str, password: str):
         connection.close()
         return True
     else:
-        connection.close()
-        return False
-    
-def login(username: str, password: str):
+        if result[1] == password:
+            connection.close()
+            return True
+        else:
+            connection.close()
+            return False
+
+def updateScore(username: str, score: int):
     connection = sqlite3.connect('quiz.db')
     cursor = connection.cursor()
-    cursor.execute('SELECT username, password FROM quiz WHERE username=? AND password=?', (username, password))
+    cursor.execute('SELECT highScore FROM quiz WHERE username=?', (username,))
     result = cursor.fetchone()
-    if result is None:
-        connection.close()
-        return False
-    else:
+    if result is not None:
+        cursor.execute('UPDATE quiz SET highScore=? WHERE username=?', (score, username))
+        connection.commit()
         connection.close()
         return True
-
-def updateScore(username: str, score: str):
-    connection = sqlite3.connect('quiz.db')
-    cursor = connection.cursor()
-    cursor.execute('UPDATE quiz SET highScore=? WHERE username=?', (score, username))
-    connection.commit()
-    connection.close()
+    else:
+        connection.close()
+        return False

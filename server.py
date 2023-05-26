@@ -47,7 +47,7 @@ def handleClient(client, address):
                 break
 
 with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
-    port = 9990
+    port = 9999
     s.bind(('localhost', port))
     s.listen()
     print(f'Listening on port {port}')

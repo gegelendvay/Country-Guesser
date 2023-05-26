@@ -6,11 +6,9 @@ import getpass
 
 highScore = 0
 
-#functions.register('Joe', '1234')
-
 def handleGame(score: int):
     global highScore
-    print('[1]Play Again\n[2]Leaderboard\n[3]Login/Register to save score\n[4]Quit')
+    print('[1]Play Again\n[2]Leaderboard\n[3]Save Score\n[4]Quit')
     userInput = input()
     if not userInput.isdigit():
         return False
@@ -25,14 +23,15 @@ def handleGame(score: int):
         print(functions.leaderboard())
         return False
     elif userInput == 3:
-        clearConsole()
+        #clearConsole()
         username = input('Username: ')
         #password = input('Password: ')
         password = getpass.getpass()
         if functions.login(username, password):
-            functions.updateScore(username, highScore)
+            if functions.updateScore(username, highScore):
+                print('Score saved!')
         else:
-            print('Login failed!')
+            print('Invalid credentials.')
         return False
     elif userInput == 4 or userInput > 4:
         return False
@@ -46,7 +45,7 @@ score = 0
 
 while restart:
     with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
-        port = 9990
+        port = 9999
         s.connect(('localhost', port))
         #Welcome
         print(s.recv(1024).decode('utf-8'))
