@@ -75,8 +75,22 @@ def updateScore(username: str, score: int):
     cursor = connection.cursor()
     cursor.execute('SELECT highScore FROM quiz WHERE username=?', (username,))
     result = cursor.fetchone()
-    if result is not None:
+    if result is not None and score > result[0]:
         cursor.execute('UPDATE quiz SET highScore=? WHERE username=?', (score, username))
+        connection.commit()
+        connection.close()
+        return True
+    else:
+        connection.close()
+        return False
+
+def resetScore(username: str):
+    connection = sqlite3.connect('quiz.db')
+    cursor = connection.cursor()
+    cursor.execute('SELECT username FROM quiz WHERE username=?', (username,))
+    result = cursor.fetchone()
+    if result is not None:
+        cursor.execute('UPDATE quiz SET highScore=? WHERE username=?', (0, username))
         connection.commit()
         connection.close()
         return True

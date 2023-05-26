@@ -4,36 +4,41 @@ import socket
 import os
 import getpass
 
-highScore = 0
-
 def handleGame(score: int):
-    global highScore
-    print('[1]Play Again\n[2]Leaderboard\n[3]Save Score\n[4]Quit')
+    print('[1]Play Again\n[2]Leaderboard\n[3]Save Score\n[4]Reset Score\n[5]Quit')
     userInput = input()
     if not userInput.isdigit():
         return False
-    
-    if score > highScore:
-        highScore = score
 
     userInput = int(userInput)
+    clearConsole()
     if userInput == 1:
         return True
     elif userInput == 2:
-        print(functions.leaderboard())
+        leaderboard = functions.leaderboard()
+        print('Top 5 players:')
+        for i, j in enumerate(leaderboard):
+            print(f'{i+1}. {j[0]}: {j[1]}')
         return False
     elif userInput == 3:
-        #clearConsole()
         username = input('Username: ')
-        #password = input('Password: ')
         password = getpass.getpass()
         if functions.login(username, password):
-            if functions.updateScore(username, highScore):
-                print('Score saved!')
+            if functions.updateScore(username, score):
+                print(f'Score saved for {username}!')
         else:
             print('Invalid credentials.')
         return False
-    elif userInput == 4 or userInput > 4:
+    elif userInput == 4:
+        username = input('Username: ')
+        password = getpass.getpass()
+        if functions.login(username, password):
+            if functions.resetScore(username):
+                print(f'Score reset for {username}!')
+        else:
+            print('Invalid credentials.')
+        return False
+    elif userInput > 4:
         return False
     
 def clearConsole():
@@ -41,7 +46,7 @@ def clearConsole():
 
 restart = True
 score = 0
-#clearConsole()
+clearConsole()
 
 while restart:
     with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
@@ -87,5 +92,4 @@ while restart:
                 restart = False
                 break
     restart = handleGame(score)
-    #clearConsole()
 s.close()

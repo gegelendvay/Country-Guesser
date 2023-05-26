@@ -5,7 +5,7 @@ import threading
 
 def handleClient(client, address):
     points = 0
-    client.sendall('Welcome to the quiz game'.encode('utf-8'))
+    client.sendall('Welcome to the country quiz game'.encode('utf-8'))
     while True:
         country = functions.getCountry()
         capital = functions.getCapital(country)
@@ -20,7 +20,6 @@ def handleClient(client, address):
         if functions.checkAnswer(answer, country):
             client.sendall('Correct answer!'.encode('utf-8'))
             points += 2
-            #print(f'Client {address} has {points} points')
             continue
         else:
             client.sendall('Incorrect answer. Do you want a hint?'.encode('utf-8'))
@@ -35,7 +34,6 @@ def handleClient(client, address):
                 if functions.checkAnswer(hintAnswer, country):
                     client.sendall('Correct answer!'.encode('utf-8'))
                     points += 1
-                    #print(f'Client {address} has {points} points')
                     continue
                 else:
                     client.sendall(f'Incorrect answer. The correct answer was {country}! Your score: {points}'.encode('utf-8'))
