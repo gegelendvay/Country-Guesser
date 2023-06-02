@@ -1,8 +1,9 @@
 import functions
-import json
-import socket
-import os
 import getpass
+import json
+import os
+import socket
+import time
 
 def handleGame(score: int):
     print('[1]Play Again\n[2]Leaderboard\n[3]Save Score\n[4]Reset Score\n[5]Quit')
@@ -24,8 +25,11 @@ def handleGame(score: int):
         username = input('Username: ')
         password = getpass.getpass()
         if functions.login(username, password):
-            if functions.updateScore(username, score):
+            time.sleep(1)
+            if functions.updateScore(username, int(score)):
                 print(f'Score saved for {username}!')
+            else:
+                print(f'Error saving score.')
         else:
             print('Invalid credentials.')
         return False
