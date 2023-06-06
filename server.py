@@ -3,25 +3,21 @@ import json
 import socket
 import threading
 
-threadingLock = threading.Lock()
-
 def handleClient(client, address):
     #Initialize the game
     points = 0
     client.sendall('Welcome to the country quiz game!'.encode('utf-8'))
-    
-    while True:
-        #Use the lock to prevent conflicts between threads
-        with threadingLock:
-            #Get a random country and its capital
-            country = functions.getCountry()
-            capital = functions.getCapital(country)
-            #Send the question and the options to the client
-            question = f'Which country\'s capital city is {capital}?'
-            client.sendall(question.encode('utf-8'))
 
-            options = functions.getQuestion(country)
-            client.sendall(json.dumps(options).encode('utf-8'))
+    while True:
+        #Get a random country and its capital
+        country = functions.getCountry()
+        capital = functions.getCapital(country)
+        #Send the question and the options to the client
+        question = f'Which country\'s capital city is {capital}?'
+        client.sendall(question.encode('utf-8'))
+
+        options = functions.getQuestion(country)
+        client.sendall(json.dumps(options).encode('utf-8'))
 
         try:
             answer = client.recv(4096).decode('utf-8')
@@ -61,26 +57,16 @@ def handleClient(client, address):
                 client.close()
                 break
 
-def startServer():
-    #List of client threads
-    threads = []
-
-    with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
-        port = 9999
-        s.bind(('localhost', port))
-        s.listen()
-        print(f'Listening on port {port}')
-        #Initialize the database
-        functions.setupDB()
-        while True:
-            client, address = s.accept()
-            #Start a new thread for each client connection
-            thread = threading.Thread(target=handleClient, args=(client, address))
-            thread.start()
-            threads.append(thread)
-
-            # Wait for all client threads to finish before closing the server
-            for thread in threads:
-                thread.join()
-
-startServer()
+#Open a socket and listen for traffic
+with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
+    port = 9999
+    s.bind(('localhost', port))
+    s.listen()
+    print(f'Listening on port {port}')
+    #Initialize the database
+    functions.setupDB()
+    while True:
+        client, address = s.accept()
+        #Start a new thread for each client connection
+        thread = threading.Thread(target=handleClient, args=(client, address))
+        thread.start()
