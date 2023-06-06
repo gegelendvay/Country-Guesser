@@ -75,8 +75,10 @@ def updateScore(username: str, score: int):
     cursor = connection.cursor()
     cursor.execute('SELECT highScore FROM quiz WHERE username=?', (username,))
     result = cursor.fetchone()
-    if result is not None and score > result[0]:
-        cursor.execute('UPDATE quiz SET highScore=? WHERE username=?', (score, username))
+    if result is not None:
+        currentScore = result[0]
+        newScore = max(score, currentScore)
+        cursor.execute('UPDATE quiz SET highScore=? WHERE username=?', (newScore, username))
         connection.commit()
         connection.close()
         return True

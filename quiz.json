@@ -48,7 +48,7 @@
         "continent": "Oceania"
     },
     "Austria": {
-        "capital": "Wien",
+        "capital": "Vienna",
         "continent": "Europe"
     },
     "Azerbaijan": {
@@ -171,10 +171,6 @@
         "capital": "Flying Fish Cove",
         "continent": "Oceania"
     },
-    "Cocos (Keeling) Islands": {
-        "capital": "West Island",
-        "continent": "Oceania"
-    },
     "Colombia": {
         "capital": "Santaf",
         "continent": "South America"
@@ -291,10 +287,6 @@
         "capital": "Papeete",
         "continent": "Oceania"
     },
-    "French Southern and Antarctic Lands": {
-        "capital": "Saint Pierre",
-        "continent": "Antarctica"
-    },
     "Gabon": {
         "capital": "Libreville",
         "continent": "Africa"
@@ -396,7 +388,7 @@
         "continent": "Asia"
     },
     "Italy": {
-        "capital": "Roma",
+        "capital": "Rome",
         "continent": "Europe"
     },
     "Ivory Coast": {
@@ -560,7 +552,7 @@
         "continent": "Africa"
     },
     "Myanmar": {
-        "capital": "Rangoon (Yangon)",
+        "capital": "Naypyidaw",
         "continent": "Asia"
     },
     "Namibia": {
@@ -660,7 +652,7 @@
         "continent": "Oceania"
     },
     "Poland": {
-        "capital": "Warszawa",
+        "capital": "Warsaw",
         "continent": "Europe"
     },
     "Portugal": {
@@ -766,10 +758,6 @@
     "South Africa": {
         "capital": "Pretoria",
         "continent": "Africa"
-    },
-    "South Georgia and the South Sandwich Islands": {
-        "capital": "King Edward Point",
-        "continent": "Antarctica"
     },
     "South Korea": {
         "capital": "Seoul",
